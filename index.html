@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Customer Profile Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 30px;
+    }
+    .card-form {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    .form-title {
+      text-align: center;
+      margin-bottom: 25px;
+      font-weight: bold;
+      color: #1d3557;
+    }
+    .form-section-title {
+      margin-top: 20px;
+      color: #457b9d;
+      font-weight: 600;
+    }
+    .btn-submit {
+      background-color: #1d3557;
+      color: white;
+      border: none;
+      margin-top: 20px;
+    }
+    .btn-submit:hover {
+      background-color: #457b9d;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card-form">
+  <h2 class="form-title">Customer Profile</h2>
+  <form id="customerForm">
+    <!-- Business Information -->
+    <h5 class="form-section-title">Business Information</h5>
+    <div class="mb-3">
+      <label class="form-label">Business Name</label>
+      <input type="text" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Business Address</label>
+      <input type="text" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Business Phone</label>
+      <input type="tel" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Business Email</label>
+      <input type="email" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">SSM Registration Number</label>
+      <input type="text" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Company TIN</label>
+      <input type="text" class="form-control" required />
+    </div>
+
+    <!-- Point of Contact -->
+    <h5 class="form-section-title">Point of Contact</h5>
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input type="text" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Phone Number</label>
+      <input type="tel" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-submit w-100">Save Customer Profile</button>
+  </form>
+
+  <!-- Success Message -->
+  <div id="confirmationMessage" class="alert alert-success mt-3 d-none" role="alert">
+    Customer profile has been saved successfully!
+  </div>
+</div>
+
+<script>
+  document.getElementById('customerForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const message = document.getElementById('confirmationMessage');
+    
+    // Show success message
+    message.classList.remove('d-none');
+
+    // Scroll to the message smoothly
+    message.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    // Reset the form without scrolling to top
+    const elements = this.elements;
+    for (let i = 0; i < elements.length; i++) {
+      if (elements[i].tagName.toLowerCase() !== 'button') {
+        elements[i].value = '';
+      }
+    }
+
+    // Hide after 5 seconds
+    setTimeout(() => {
+      message.classList.add('d-none');
+    }, 5000);
+  });
+</script>
+
+</body>
+</html>
